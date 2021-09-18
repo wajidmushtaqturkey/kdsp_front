@@ -21,17 +21,17 @@ const getOptions = (reqType, data, headers) => {
     controller.abort();
   }, API_TIMEOUT);
   const options = Object.assign({ method: reqType });
-  options.credentials = "include";
-  options.mode = "no-cors";
+  // options.credentials = "include";
+  // options.mode = "no-cors";
 
   if (reqType !== REQUEST_TYPE.GET) options.body = JSON.stringify(data);
   options.headers = {
     ...headers,
-    // ...{
-    //   Accept: "application/json",
-    //   "Content-Type": "application/json",
-    //   dataType: "json",
-    // },
+    ...{
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      dataType: "json",
+    },
   };
   options.signal = controller.signal;
   return options;

@@ -164,7 +164,7 @@ export const INVALID_LAT = "Invalid latitude";
 export const INVALID_LNG = "Invalid longitude";
 export const FAILED_TO_FETCH = "Failed to fetch, try to refresh the page";
 
-export const DEV_ENV = "dev";
+export const DEV_ENV = true;
 export const PROD_ENV = "prod";
 export const MAX_ADDITIONAL_LOCATION = 31;
 export const MAX_IMAGES_PER_LOCATION = 3;

@@ -11,7 +11,7 @@ import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 
 import { logger } from "redux-logger";
 
-import sagas from "../sagas";
+import sagas from "sagas/index";
 import { DEV_ENV } from "../constants";
 
 export default function configureStore(reducers, onComplete: Function) {
@@ -19,8 +19,8 @@ export default function configureStore(reducers, onComplete: Function) {
     key: "root",
     storage: reduxStorage,
     stateReconciler: autoMergeLevel2, // see "Merge Process" section for details.
-    whitelist: ["user", "dmPersist"],
-    whitelist: ["general", "appLanguage"],
+    whitelist: ["user", "data"],
+    // whitelist: ["general", "appLanguage"],
   };
 
   const syncStateConfig = {
@@ -35,7 +35,7 @@ export default function configureStore(reducers, onComplete: Function) {
     sagaMiddleware,
   ];
 
-  if (process.env.REACT_APP_ENV === DEV_ENV) {
+  if (DEV_ENV) {
     middlewares.push(logger);
   }
 
@@ -47,7 +47,7 @@ export default function configureStore(reducers, onComplete: Function) {
 
   setTimeout(() => {
     onComplete();
-  }, 1000);
+  }, 700);
 
   sagaMiddleware.run(sagas);
 

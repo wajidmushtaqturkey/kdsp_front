@@ -4,7 +4,7 @@ import _ from "lodash";
 import { useDispatch } from "react-redux";
 import { userSignupRequest } from "actions/UserActions";
 
-export default function Register() {
+export default function Register(props) {
   const username = useSetValue("");
   const email = useSetValue("");
   const password = useSetValue("");
@@ -60,10 +60,11 @@ export default function Register() {
     e.preventDefault();
     if (validation()) {
       const payload = {
-        username: username.value,
-        email: email.value,
-        password: password.value,
+        username: "ahsan abrar",
+        email: "ahsan@mial.com",
+        password: "pk123456",
       };
+
       dispatch(userSignupRequest(payload), () => {
         alert("Asd");
       });

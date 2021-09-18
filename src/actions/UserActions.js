@@ -3,6 +3,9 @@
 import { USER_SIGNUP } from "./ActionTypes";
 
 export function userSignupRequest(payload, responseCallback) {
+  console.log({
+    payload,
+  });
   return {
     payload,
     responseCallback,

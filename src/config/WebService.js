@@ -8,7 +8,7 @@ export const API_TIMEOUT = 30000;
 export const ABORT_REQUEST_MESSAGE = "Network failed. Aborted request.";
 
 // API USER ROUTES
-export const API_LOG = process.env.REACT_APP_ENV === DEV_ENV;
+export const API_LOG = DEV_ENV;
 
 export const ERROR_SOMETHING_WENT_WRONG = {
   message: "Something went wrong, Please try again later",

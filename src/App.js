@@ -20,13 +20,18 @@ const reducers = require("./reducers").default;
 // Initialize the desired locales.
 export default class App extends React.Component {
   persistor = null;
-  state = {
-    isLoading: true,
-    store: configureStore(reducers, () => {
-      this._loadingCompleted();
-      this.setState({ isLoading: false });
-    }),
-  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: true,
+      store: configureStore(reducers, () => {
+        this._loadingCompleted();
+        this.setState({ isLoading: false });
+      }),
+    };
+  }
 
   _loadingCompleted = () => {
     DataHandler.setStore(this.state.store);
