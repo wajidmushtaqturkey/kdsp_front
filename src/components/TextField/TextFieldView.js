@@ -1,14 +1,19 @@
 // @flow
-import React from 'react';
-import { css } from 'aphrodite';
-import styles from './TextFieldStyles';
-import { AppStyles } from '../../theme';
+import React from "react";
+import { css } from "aphrodite";
+import styles from "./TextFieldStyles";
+import { AppStyles } from "../../theme";
 
 export default function TextFieldView(props) {
   return (
     <div className={css([props.icon && styles.withIcon])}>
       {props.label && (
-        <label className={css(styles.labelStyle)}>{props.label}:</label>
+        <label
+          className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+          htmlFor="grid-password"
+        >
+          {props.label}
+        </label>
       )}
       {props.icon && (
         <img alt="Icon" className={css(styles.icon)} src={props.icon} />
@@ -16,11 +21,11 @@ export default function TextFieldView(props) {
       {!props.isTextArea && (
         <input
           {...props}
-          type={props.type || 'text'}
+          type={props.type || "text"}
           className={css([
             styles.inputStyle,
             props.icon && styles.inputWithIcon,
-            props.styles && props.styles
+            props.styles && props.styles,
           ])}
           autoComplete="off"
         />
@@ -33,7 +38,7 @@ export default function TextFieldView(props) {
           className={css([
             styles.textAreaStyle,
             styles.inputStyle,
-            props.styles && props.styles
+            props.styles && props.styles,
           ])}
         />
       )}
