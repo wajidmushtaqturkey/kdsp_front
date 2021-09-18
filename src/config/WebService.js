@@ -2,7 +2,7 @@ import _ from "lodash";
 import Util from "../services/Util";
 import { DEV_ENV } from "../constants";
 
-export const BASE_URL = "https://api.izobi.com/";
+export const BASE_URL = "http://localhost:3002/";
 
 export const API_TIMEOUT = 30000;
 export const ABORT_REQUEST_MESSAGE = "Network failed. Aborted request.";
@@ -34,35 +34,8 @@ export const REQUEST_TYPE = {
 
 // API USER ROUTES
 
-export const USER_UPLOAD_LOGO = {
-  route: "b/user/logo-upload",
-  auth: true,
-  type: REQUEST_TYPE.POST,
-};
-
-export const CONTACT_US = {
-  route: "user/submit-contact-form",
-  auth: false,
-  type: REQUEST_TYPE.POST,
-};
-export const GET_BLOGS = {
-  route: "user/blog-listing",
-  auth: false,
-  type: REQUEST_TYPE.POST,
-};
-export const BLOG_DETAIL = {
-  route: "user/blog-detail",
-  auth: false,
-  type: REQUEST_TYPE.POST,
-};
-export const EMAIL_SUBSCRIPTION = {
-  route: "user/subscribe-newsletter",
-  auth: false,
-  type: REQUEST_TYPE.POST,
-};
-
-export const GET_VEHICLES = {
-  route: "b/get-vehicles",
+export const USER_SIGNUP = {
+  route: "auth/signup",
   auth: false,
   type: REQUEST_TYPE.POST,
 };

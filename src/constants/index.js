@@ -174,5 +174,12 @@ export const CENTRAL_LONDON = { lat: 51.509099, lng: -0.126541 };
 export const DM_MODULE_UPDATE_TIMEOUT_IN_MINUTES = 20;
 
 export const ROUTES = {
-  DASHBOARD: "/dashboard",
+  WAIT_LIST: "/admin/waitlist",
+};
+
+// Message types
+export const MESSAGE_TYPES = {
+  INFO: "info",
+  ERROR: "error",
+  SUCCESS: "success",
 };

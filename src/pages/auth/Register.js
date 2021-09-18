@@ -1,6 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
+import TextField from "components/TextField";
+import _ from "lodash";
+import { useDispatch } from "react-redux";
+import { userSignupRequest } from "actions/UserActions";
 
 export default function Register() {
+  const username = useSetValue("");
+  const email = useSetValue("");
+  const password = useSetValue("");
+  // error
+  const usernameError = useSetValue("");
+  const emailError = useSetValue("");
+  const passwordError = useSetValue("");
+
+  const dispatch = useDispatch();
+
+  function useSetValue(initialValue) {
+    const [value, setValue] = useState(initialValue);
+
+    function handleChange(val) {
+      setValue(val);
+    }
+
+    return {
+      value,
+      onChange: handleChange,
+    };
+  }
+
+  // validation
+  const validation = () => {
+    let error = false;
+
+    if (_.isEmpty(username.value)) {
+      usernameError.onChange("Username is Required");
+      error = true;
+    } else {
+      usernameError.onChange("");
+    }
+
+    if (_.isEmpty(email.value)) {
+      emailError.onChange("email is Required");
+      error = true;
+    } else {
+      emailError.onChange("");
+    }
+
+    if (_.isEmpty(password.value)) {
+      passwordError.onChange("Password is Required");
+      error = true;
+    } else {
+      passwordError.onChange("");
+    }
+
+    return !error;
+  };
+
+  const handleSumbit = (e) => {
+    e.preventDefault();
+    if (validation()) {
+      const payload = {
+        username: username.value,
+        email: email.value,
+        password: password.value,
+      };
+      dispatch(userSignupRequest(payload), () => {
+        alert("Asd");
+      });
+    }
+  };
+
   return (
     <>
       <div className="container mx-auto px-4 h-full">
@@ -10,40 +79,13 @@ export default function Register() {
               <div className="rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">
                   <h6 className="text-blueGray-500 text-sm font-bold">
-                    Sign up with
+                    Sign up
                   </h6>
-                </div>
-                <div className="btn-wrapper text-center">
-                  <button
-                    className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
-                    type="button"
-                  >
-                    <img
-                      alt="..."
-                      className="w-5 mr-1"
-                      src={require("assets/img/github.svg").default}
-                    />
-                    Github
-                  </button>
-                  <button
-                    className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
-                    type="button"
-                  >
-                    <img
-                      alt="..."
-                      className="w-5 mr-1"
-                      src={require("assets/img/google.svg").default}
-                    />
-                    Google
-                  </button>
                 </div>
                 <hr className="mt-6 border-b-1 border-blueGray-300" />
               </div>
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                <div className="text-blueGray-400 text-center mb-3 font-bold">
-                  <small>Or sign up with credentials</small>
-                </div>
-                <form>
+                <form onSubmit={handleSumbit}>
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -51,10 +93,15 @@ export default function Register() {
                     >
                       Name
                     </label>
-                    <input
-                      type="email"
+                    <TextField
+                      type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Name"
+                      error={usernameError.value}
+                      value={username.value}
+                      onChange={(e) => {
+                        username.onChange(e.target.value);
+                      }}
                     />
                   </div>
 
@@ -65,10 +112,15 @@ export default function Register() {
                     >
                       Email
                     </label>
-                    <input
+                    <TextField
                       type="email"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
+                      error={emailError.value}
+                      value={email.value}
+                      onChange={(e) => {
+                        email.onChange(e.target.value);
+                      }}
                     />
                   </div>
 
@@ -79,10 +131,15 @@ export default function Register() {
                     >
                       Password
                     </label>
-                    <input
+                    <TextField
                       type="password"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Password"
+                      value={password.value}
+                      onChange={(e) => {
+                        password.onChange(e.target.value);
+                      }}
+                      error={passwordError.value}
                     />
                   </div>
 
@@ -107,12 +164,13 @@ export default function Register() {
                   </div>
 
                   <div className="text-center mt-6">
-                    <button
+                    <input
+                      onClick={handleSumbit}
+                      type="submit"
+                      value="CREATE ACCOUNT"
                       className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="button"
-                    >
-                      Create Account
-                    </button>
+                    />
                   </div>
                 </form>
               </div>

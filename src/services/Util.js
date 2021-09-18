@@ -1,8 +1,9 @@
 // @flow
+import { MESSAGE_TYPES } from "constants/index";
 import _ from "lodash";
 import moment from "moment";
 import DataHandler from "./DataHandler";
-
+import Swal from "sweetalert2";
 class Util {
   keyExtractor = (item, index) => index.toString();
 
@@ -114,6 +115,68 @@ class Util {
       S4()
     );
   }
-}
 
+  topAlert = (message, type = MESSAGE_TYPES.SUCCESS) => {
+    let title = "";
+    if (type === MESSAGE_TYPES.SUCCESS) {
+      title = "Success";
+    } else if (type === MESSAGE_TYPES.ERROR) {
+      title = "Error";
+    } else if (type === MESSAGE_TYPES.INFO) {
+      title = "Info";
+    }
+    this.dmInformAlert(title, message, null, null);
+  };
+
+  topAlertError = (message) => {
+    this.topAlert(message, MESSAGE_TYPES.ERROR);
+  };
+
+  dmInformAlert = (title, text, confirmButtonText, onConfirmPress) => {
+    this.dmConfirmAlert(title, text, confirmButtonText, onConfirmPress, false);
+  };
+
+  dmConfirmAlert = (
+    title,
+    text,
+    confirmButtonText,
+    onConfirmPress,
+    showCancelButton = true
+  ) => {
+    const obj = {
+      background: "rgba(52, 52, 52, 1)",
+      position: "top",
+      title: title,
+      text: text,
+      reverseButtons: true,
+      showCancelButton,
+      confirmButtonText: confirmButtonText ? confirmButtonText : "OK",
+      customClass: {
+        container: "dm_swl_container",
+        popup: "dm_swl_popup",
+        header: "dm_swl_header",
+        title: "dm_swl_title",
+        closeButton: "dm_swl_closeButton",
+        icon: "dm_swl_icon",
+        image: "dm_swl_image",
+        content: "dm_swl_content",
+        input: "dm_swl_input",
+        actions: "dm_swl_actions",
+        confirmButton: "dm_swl_confirmButton",
+        cancelButton: "dm_swl_cancelButton",
+        footer: "dm_swl_footer",
+      },
+    };
+
+    Swal.fire(obj).then((yes) => {
+      if (
+        yes.value &&
+        !_.isUndefined(onConfirmPress) &&
+        onConfirmPress != null
+      ) {
+        onConfirmPress();
+      }
+    });
+  };
+}
 export default new Util();

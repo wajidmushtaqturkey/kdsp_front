@@ -27,8 +27,8 @@ class Routers extends React.PureComponent {
       <Router>
         <div>
           <Switch>
+            <Route path="/" component={Auth} />
             <Route path="/admin" component={Admin} />
-            <Route path="/auth" component={Auth} />
             {/* <NoAuthRoute
               path={ROUTES.DASHBOARD}
               component={Dashboard}

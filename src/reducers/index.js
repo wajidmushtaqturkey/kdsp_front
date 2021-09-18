@@ -1,9 +1,7 @@
 import { combineReducers } from "redux";
 
-import general from "./general";
-import blog from "./blog";
+import user from "./user";
 
 export default combineReducers({
-  general,
-  blog,
+  user,
 });

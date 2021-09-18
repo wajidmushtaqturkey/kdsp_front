@@ -22,6 +22,8 @@ const getOptions = (reqType, data, headers) => {
   }, API_TIMEOUT);
   const options = Object.assign({ method: reqType });
   options.credentials = "include";
+  options.mode = "no-cors";
+
   if (reqType !== REQUEST_TYPE.GET) options.body = JSON.stringify(data);
   options.headers = {
     ...headers,
