@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 
 import TableDropdown from "components/Dropdowns/TableDropdown.js";
 import Heading from "components/atomic/Heading";
+import { Link } from "react-router-dom";
+import { ROUTES } from "constants/index";
 
 export default function CardTable({ color }) {
   return (
@@ -21,12 +23,13 @@ export default function CardTable({ color }) {
               <Heading title="Waiting List" color={color} />
             </div>
             <div className="flex relative w-full px-4 max-w-full flex-grow flex-1 justify-end">
-              <button
+              <Link
+                to={ROUTES.PERSONAL_DETAIL}
                 className="bg-indigo-500 text-white active:bg-indigo-600 flex font-bold uppercase text-xs px-6 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
               >
                 ADD NEW
-              </button>
+              </Link>
             </div>
           </div>
         </div>

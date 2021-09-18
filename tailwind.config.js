@@ -2,6 +2,10 @@ const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
+  corePlugins: {
+    // ...
+    borderColor: true,
+  },
   purge: {
     enabled: true,
     content: [

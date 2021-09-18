@@ -15,9 +15,11 @@ import PersonalDetail from "../pages/client/PersonalDetail";
 
 import Tables from "pages/admin/Tables";
 import WaitList from "pages/admin/WaitList";
+import Doctors from "pages/admin/Doctors";
 import Settings from "pages/admin/Settings";
 import Login from "pages/auth/Login";
 import Register from "pages/auth/Register";
+import ClientProfile from "pages/admin/ClientProfile";
 
 const NoAuthRoute = ({ ...props }) => {
   return (
@@ -52,14 +54,11 @@ class Routers extends React.PureComponent {
       <Router>
         <div>
           <Switch>
-            <Route path="/" component={Auth} {...repeatedProps} />
-            <Route path="/admin" component={Admin} {...repeatedProps} />
             <Route
-              path="/personal-detail"
+              path={ROUTES.PERSONAL_DETAIL}
               component={PersonalDetail}
               {...repeatedProps}
             />
-
             {/*  */}
 
             <Route path="/auth/login" component={Login} {...repeatedProps} />
@@ -68,10 +67,19 @@ class Routers extends React.PureComponent {
               component={Register}
               {...repeatedProps}
             />
-            <Redirect from="/auth" to="/auth/login" {...repeatedProps} />
 
             {/* admin */}
 
+            <Route
+              path={ROUTES.CLIENT_PROFILE}
+              component={ClientProfile}
+              {...repeatedProps}
+            />
+            <Route
+              path={ROUTES.DOCTORS}
+              component={Doctors}
+              {...repeatedProps}
+            />
             <Route
               path={ROUTES.WAIT_LIST}
               component={WaitList}
@@ -83,10 +91,7 @@ class Routers extends React.PureComponent {
               component={Dashboard}
               exact
             />
-
-            {/* <Route path="/admin/settings" exact component={Settings} exact />
-            <Route path="/admin/tables" exact component={Tables} exact /> */}
-
+            <Route path="/" component={Dashboard} {...repeatedProps} />
             {/* client */}
 
             {/* <NoAuthRoute
