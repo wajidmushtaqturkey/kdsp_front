@@ -175,6 +175,7 @@ export const DM_MODULE_UPDATE_TIMEOUT_IN_MINUTES = 20;
 
 export const ROUTES = {
   WAIT_LIST: "/admin/waitlist",
+  ADMIN_DASHBOARD: "/admin/dashboard",
 };
 
 // Message types

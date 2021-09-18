@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 // components
 
 import TableDropdown from "components/Dropdowns/TableDropdown.js";
+import Heading from "components/atomic/Heading";
 
 export default function CardTable({ color }) {
   return (
@@ -17,14 +18,7 @@ export default function CardTable({ color }) {
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full max-w-full flex-grow flex-1 px-4">
-              <h2
-                className={
-                  "font-bold text-xl " +
-                  (color === "light" ? "text-blueGray-800" : "text-white")
-                }
-              >
-                Waiting List
-              </h2>
+              <Heading title="Waiting List" color={color} />
             </div>
             <div className="flex relative w-full px-4 max-w-full flex-grow flex-1 justify-end">
               <button
@@ -224,8 +218,7 @@ export default function CardTable({ color }) {
                   18/05/2021
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <i className="fas fa-circle text-orange-500 mr-2">≈</i>{" "}
-                  Waiting
+                  <i className="fas fa-circle text-orange-500 mr-2"></i> Waiting
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   Approval Pending
