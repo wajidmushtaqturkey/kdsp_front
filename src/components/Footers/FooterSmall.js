@@ -19,9 +19,7 @@ export default function FooterSmall(props) {
                 <a
                   href="https://www.creative-tim.com?ref=nr-footer-small"
                   className="text-white hover:text-blueGray-300 text-sm font-semibold py-1"
-                >
-                  Creative Tim
-                </a>
+                ></a>
               </div>
             </div>
             <div className="w-full md:w-8/12 px-4">
@@ -30,9 +28,7 @@ export default function FooterSmall(props) {
                   <a
                     href="https://www.creative-tim.com?ref=nr-footer-small"
                     className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
-                  >
-                    Creative Tim
-                  </a>
+                  ></a>
                 </li>
                 <li>
                   <a
