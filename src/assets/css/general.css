@@ -1,0 +1,30 @@
+.okay-btn {
+  background-color: #1bae74;
+}
+
+.drop-down-item {
+  display: none;
+}
+.hasChild:hover .drop-down-item {
+  display: block;
+}
+
+body div header div nav a.active {
+  color: rgb(254, 171, 36) !important;
+}
+
+body .react-responsive-modal-container {
+  overflow-y: hidden !important;
+}
+
+#headerWrap {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+body .__react_component_tooltip.show {
+  width: 200px !important;
+  padding: 10px !important;
+}
